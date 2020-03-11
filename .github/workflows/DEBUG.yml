@@ -31,16 +31,16 @@ jobs:
         
     - name: Mount Google Drive
       run: |
-        sudo -i rm -rf .config 
-        sudo -i mkdir -p /root/.config/rclone/
-        sudo -i rm -rf /root/Download 
-        sudo -i mkdir -p /root/Download
+        sudo rm -rf .config 
+        sudo mkdir -p /root/.config/rclone/
+        sudo rm -rf /root/Download 
+        sudo mkdir -p /root/Download
         curl -fsSL https://rclone.org/install.sh | sudo bash
-        sudo -i wget --no-check-certificate -O config.zip "http://www.592.la/tools/config.zip" 
-        sudo -i unzip -o config.zip -d /root/.config/rclone/
+        sudo wget --no-check-certificate -O config.zip "http://www.592.la/tools/config.zip" 
+        sudo unzip -o config.zip -d /root/.config/rclone/
         sudo -i rclone mount Google:Download /root/Download &
         sleep 10
-        sudo -i tree /root/Download
+        sudo tree /root/Download
              
     - name: Wait for connection to close in 350 min...
       run: |
