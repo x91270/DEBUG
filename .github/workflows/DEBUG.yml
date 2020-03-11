@@ -25,8 +25,8 @@ jobs:
       run: |
         tmate_ssh_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
         tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')           
-        echo -e "\033[32m [INFO] \033[0m ${tmate_ssh_view}"
-        echo -e "\033[32m [INFO] \033[0m ${tmate_web_view}"
+        echo -e "\033[32m[INFO]\033[0m ${tmate_ssh_view}"
+        echo -e "\033[32m[INFO]\033[0m ${tmate_web_view}"
         
     - name: Mount Google Drive
       run: |
