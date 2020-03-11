@@ -8,18 +8,28 @@ jobs:
     steps:
     - name: Install tmate on Ubuntu
       run: |
+        Green_font_prefix="\033[32m"
+        Red_font_prefix="\033[31m"
+        Green_background_prefix="\033[42;37m"
+        Red_background_prefix="\033[41;37m"
+        Font_color_suffix="\033[0m"
+        INFO="[${Green_font_prefix}INFO${Font_color_suffix}]"
+        ERROR="[${Red_font_prefix}ERROR${Font_color_suffix}]" 
+                       
         curl -fsSL git.io/tmate.sh | bash
         [ -e ~/.ssh/id_rsa ] || ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
         
     - name: Running tmate...
       run: |
         tmate -S /tmp/tmate.sock new-session -d
-        tmate -S /tmp/tmate.sock wait tmate-ready    
+        tmate -S /tmp/tmate.sock wait tmate-ready
+        echo || exit 1
+        sleep 30  
         
     - name: To connect to this session copy-n-paste the following into a terminal or browser
       run: |
-        tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
-        tmate -S /tmp/tmate.sock display -p '#{tmate_web}'
+        "${ERROR} tmate -S /tmp/tmate.sock display -p '${INFO} #{tmate_ssh}'
+        tmate -S /tmp/tmate.sock display -p '${INFO} #{tmate_web}'
         sleep 30
         if [[ ! -z "$SLACK_WEBHOOK_URL" ]]; then
           MSG=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
