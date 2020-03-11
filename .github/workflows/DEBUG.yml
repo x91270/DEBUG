@@ -23,14 +23,15 @@ jobs:
       run: |
         tmate -S /tmp/tmate.sock new-session -d
         tmate -S /tmp/tmate.sock wait tmate-ready
-        
-    - name: To connect to this session...
-      run: |
+        sleep 30
         tmate_ssh_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
         tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')
-        #ehco -e "${INFO} $tmate_ssh_view"
-        #ehco -e "${INFO} $tmate_web_view"
-        sleep 30
+
+                
+    - name: To connect to this session...
+      run: |
+        ehco ${INFO} $tmate_ssh_view
+        ehco ${INFO} $tmate_web_view
         #if [[ ! -z "$SLACK_WEBHOOK_URL" ]]; then
           #MSG=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
           #curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`$MSG\`\"}" $SLACK_WEBHOOK_URL
