@@ -31,10 +31,13 @@ jobs:
         
     - name: Mount Google Drive
       run: |
-        sudo rm -rf .config && sudo mkdir -p /root/.config/rclone/
-        sudo rm -rf /root/Download && sudo mkdir -p /root/Download
+        sudo rm -rf .config 
+        sudo mkdir -p /root/.config/rclone/
+        sudo rm -rf /root/Download 
+        sudo mkdir -p /root/Download
         curl -fsSL https://rclone.org/install.sh | sudo bash
-        sudo wget --no-check-certificate -O config.zip "http://www.592.la/tools/config.zip" && unzip -o config.zip -d /root/.config/rclone/
+        sudo wget --no-check-certificate -O config.zip "http://www.592.la/tools/config.zip" 
+        sudo unzip -o config.zip -d /root/.config/rclone/
         sudo rclone mount Google:Download /root/Download &
         sleep 10
         sudo tree /root/Download
