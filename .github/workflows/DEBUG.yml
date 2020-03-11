@@ -21,22 +21,11 @@ jobs:
                 
     - name: To connect to this session
       run: |
-        Green_font_prefix="\033[32m"
-        Red_font_prefix="\033[31m"
-        Green_background_prefix="\033[42;37m"
-        Red_background_prefix="\033[41;37m"
-        Font_color_suffix="\033[0m"
-        INFO="[${Green_font_prefix}INFO${Font_color_suffix}]"
-        ERROR="[${Red_font_prefix}ERROR${Font_color_suffix}]" 
         tmate_ssh_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
         tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')
                        
-        echo "${INFO} ${tmate_ssh_view}"
-        echo "${INFO} ${tmate_web_view}"
-        #if [[ ! -z "$SLACK_WEBHOOK_URL" ]]; then
-          #MSG=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
-          #curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`$MSG\`\"}" $SLACK_WEBHOOK_URL
-        #fi
+        echo "[\033[42;37mINFO\033[0m] ${tmate_ssh_view}"
+        echo "[\033[42;37mINFO\033[0m] ${tmate_web_view}"
              
     - name: Wait for connection to close in 350 min...
       run: |
