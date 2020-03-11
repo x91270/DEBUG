@@ -26,8 +26,8 @@ jobs:
         tmate_ssh_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
         tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')
                        
-        echo "[\033[42;37mINFO\033[0m] ${tmate_ssh_view}"
-        echo "[\033[42;37mINFO\033[0m] ${tmate_web_view}"
+        echo "[INFO] ${tmate_ssh_view}"
+        echo "[INFO] ${tmate_web_view}"
              
     - name: Wait for connection to close in 350 min...
       run: |
