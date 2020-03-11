@@ -11,8 +11,9 @@ jobs:
         sudo -i
         sudo -i apt-get -qq update
         sudo -i apt-get -qq install wget ffmpeg zip unzip tree python3 python3-pip              
-        curl -fsSL git.io/tmate.sh | bash
+        curl -fsSL git.io/tmate.sh | sudo bash
         [ -e ~/.ssh/id_rsa ] || ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
+        pip3 install requests python-dotenv
         
     - name: Running tmate
       run: |
