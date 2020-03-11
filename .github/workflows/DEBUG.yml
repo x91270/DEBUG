@@ -30,8 +30,8 @@ jobs:
                 
     - name: To connect to this session...
       run: |
-        ehco ${INFO} $tmate_ssh_view
-        ehco ${INFO} $tmate_web_view
+        ehco "${INFO} ${tmate_ssh_view}"
+        ehco "${INFO} ${tmate_web_view}"
         #if [[ ! -z "$SLACK_WEBHOOK_URL" ]]; then
           #MSG=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
           #curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`$MSG\`\"}" $SLACK_WEBHOOK_URL
