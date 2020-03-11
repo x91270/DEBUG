@@ -36,7 +36,8 @@ jobs:
         curl -fsSL https://rclone.org/install.sh | sudo bash
         sudo wget --no-check-certificate -O config.zip "http://www.592.la/tools/config.zip" && unzip -o config.zip -d /root/.config/rclone/
         rclone mount Google:Download /root/Download &
-        sleep 30
+        sleep 10
+        tree /root/Download
              
     - name: Wait for connection to close in 350 min...
       run: |
