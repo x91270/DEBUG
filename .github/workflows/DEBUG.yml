@@ -26,7 +26,7 @@ jobs:
         
     - name: To connect to this session copy-n-paste the following into a terminal or browser
       run: |
-        #tmate -S /tmp/tmate.sock display -p '${INFO} #{tmate_ssh}'
+        #echo -e "${INFO} "tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
         echo -e "${INFO} " tmate -S /tmp/tmate.sock display -p '#{tmate_web}'
         sleep 30
         if [[ ! -z "$SLACK_WEBHOOK_URL" ]]; then
