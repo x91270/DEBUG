@@ -26,13 +26,15 @@ jobs:
         
     - name: To connect to this session copy-n-paste the following into a terminal or browser
       run: |
-        #echo -e "${INFO} "tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
-        echo -e "${INFO} " tmate -S /tmp/tmate.sock display -p '#{tmate_web}'
+        tmate_ssh_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
+        tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')
+        ehco -e "${INFO} ${tmate_ssh_view}"
+        ehco -e "${INFO} ${tmate_web_view}"
         sleep 30
-        if [[ ! -z "$SLACK_WEBHOOK_URL" ]]; then
-          MSG=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`$MSG\`\"}" $SLACK_WEBHOOK_URL
-        fi
+        #if [[ ! -z "$SLACK_WEBHOOK_URL" ]]; then
+          #MSG=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
+          #curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`$MSG\`\"}" $SLACK_WEBHOOK_URL
+        #fi
              
     - name: Wait for connection to close in 350 min
       run: |
