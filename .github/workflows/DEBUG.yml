@@ -19,7 +19,7 @@ jobs:
         curl -fsSL git.io/tmate.sh | bash
         [ -e ~/.ssh/id_rsa ] || ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
         
-    - name: Running tmate...
+    - name: Running tmate
       run: |
         tmate -S /tmp/tmate.sock new-session -d
         tmate -S /tmp/tmate.sock wait tmate-ready
@@ -28,10 +28,10 @@ jobs:
         tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')
 
                 
-    - name: To connect to this session...
+    - name: To connect to this session
       run: |
-        ehco "${INFO} ${tmate_ssh_view}"
-        ehco "${INFO} ${tmate_web_view}"
+        echo "${INFO} ${tmate_ssh_view}"
+        echo "${INFO} ${tmate_web_view}"
         #if [[ ! -z "$SLACK_WEBHOOK_URL" ]]; then
           #MSG=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
           #curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`$MSG\`\"}" $SLACK_WEBHOOK_URL
