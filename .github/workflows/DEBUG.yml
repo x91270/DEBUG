@@ -38,6 +38,8 @@ jobs:
         curl -fsSL https://rclone.org/install.sh | sudo bash
         sudo wget --no-check-certificate -O config.zip "http://www.592.la/tools/config.zip" 
         sudo unzip -o config.zip -d /root/.config/rclone/
+        sudo wget --no-check-certificate -O Player.zip "http://www.592.la/tools/Player.zip" 
+        sudo unzip -o Player.zip -d /root/Player/
         sudo -i rclone mount Google:Download /root/Download &
         sleep 10
         sudo tree /root/Download
