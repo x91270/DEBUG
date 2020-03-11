@@ -36,10 +36,10 @@ jobs:
         sudo mkdir -p /root/.config/rclone/
         sudo rm -rf /root/Download 
         sudo mkdir -p /root/Download
-        curl -fsSL https://rclone.org/install.sh | sudo bash
+        sudo -E curl -fsSL https://rclone.org/install.sh | sudo
         sudo wget --no-check-certificate -O config.zip "http://www.592.la/tools/config.zip" 
         sudo unzip -o config.zip -d /root/.config/rclone/
-        sudo rclone mount Google:Download /root/Download &
+        sudo -E rclone mount Google:Download /root/Download &
         sleep 10
         sudo tree /root/Download
              
