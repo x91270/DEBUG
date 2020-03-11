@@ -25,9 +25,10 @@ jobs:
       run: |
         tmate_ssh_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
         tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')
-                       
-        echo "[INFO] ${tmate_ssh_view}"
-        echo "[INFO] ${tmate_web_view}"
+        sudo -E green='\033[0;32m'
+        sudo -E font="\033[0m"            
+        echo "[${green}INFO${font}] ${tmate_ssh_view}"
+        echo "[${green}INFO${font}] ${tmate_web_view}"
         
     - name: Mount Google Drive
       run: |
