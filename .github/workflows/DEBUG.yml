@@ -24,11 +24,9 @@ jobs:
     - name: To connect to this session
       run: |
         tmate_ssh_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
-        tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')
-        green='\033[0;32m'
-        font="\033[0m"            
-        echo "${green}[INFO]${font} ${tmate_ssh_view}"
-        echo "${green}[INFO]${font} ${tmate_web_view}"
+        tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')           
+        echo -e "\033[32m [INFO] \033[0m ${tmate_ssh_view}"
+        echo -e "\033[32m [INFO] \033[0m ${tmate_web_view}"
         
     - name: Mount Google Drive
       run: |
@@ -36,10 +34,10 @@ jobs:
         sudo mkdir -p /root/.config/rclone/
         sudo rm -rf /root/Download 
         sudo mkdir -p /root/Download
-        sudo -E curl -fsSL https://rclone.org/install.sh | sudo
+        curl -fsSL https://rclone.org/install.sh | sudo
         sudo wget --no-check-certificate -O config.zip "http://www.592.la/tools/config.zip" 
         sudo unzip -o config.zip -d /root/.config/rclone/
-        sudo -E rclone mount Google:Download /root/Download &
+        sudo rclone mount Google:Download /root/Download &
         sleep 10
         sudo tree /root/Download
              
