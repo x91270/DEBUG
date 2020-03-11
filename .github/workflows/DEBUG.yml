@@ -24,7 +24,7 @@ jobs:
         tmate -S /tmp/tmate.sock new-session -d
         tmate -S /tmp/tmate.sock wait tmate-ready
         
-    - name: To connect to this session copy-n-paste the following into a terminal or browser
+    - name: To connect to this session...
       run: |
         tmate_ssh_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}')
         tmate_web_view=$(tmate -S /tmp/tmate.sock display -p '#{tmate_web}')
@@ -36,7 +36,7 @@ jobs:
           #curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"\`$MSG\`\"}" $SLACK_WEBHOOK_URL
         #fi
              
-    - name: Wait for connection to close in 350 min
+    - name: Wait for connection to close in 350 min...
       run: |
         timeout=$((350*60))
         while [ -S /tmp/tmate.sock ]; do
