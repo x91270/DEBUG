@@ -53,6 +53,6 @@ jobs:
 
           if (( timeout < 0 )); then
             echo Waiting on tmate connection timed out!
-            sudo init 0
+            echo "::set-output name=status::success"
           fi
         done
