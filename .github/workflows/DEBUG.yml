@@ -46,7 +46,7 @@ jobs:
              
     - name: Wait for connection to close in 350 min...
       run: |
-        timeout=$((350*60))
+        timeout=$((340*60))
         while [ -S /tmp/tmate.sock ]; do
           sleep 1
           timeout=$(($timeout-1))
